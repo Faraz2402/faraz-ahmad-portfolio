@@ -1,0 +1,11 @@
+# Source material, not served by the site
+Media/
+
+# Local tooling and working notes
+.claude/
+Prompt for building a website.txt
+
+# OS clutter
+Thumbs.db
+desktop.ini
+.DS_Store
