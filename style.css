@@ -224,11 +224,13 @@ button { font: inherit; color: inherit; }
 .stat {
   position: relative; padding: clamp(32px, 5vw, 64px) clamp(12px, 2vw, 28px);
   border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px;
+  container-type: inline-size; min-width: 0;
 }
 .stat:first-child { border-left: 0; }
 .stat__num {
   font-family: var(--f-display); font-weight: 800; letter-spacing: -0.05em; line-height: .9;
-  font-size: clamp(2.6rem, 6.6vw, 7rem); font-variant-numeric: tabular-nums;
+  /* sized to the column itself so the widest figure ("16,000") always fits */
+  font-size: clamp(1.4rem, 17cqi, 6.5rem); white-space: nowrap; font-variant-numeric: tabular-nums;
   transition: color .4s, text-shadow .4s;
 }
 .stat__label { font-family: var(--f-mono); font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--mist); }
@@ -509,7 +511,6 @@ button { font: inherit; color: inherit; }
   .hero__title { font-size: clamp(3.2rem, 17vw, 5rem); }
   .hero__ctas { width: 100%; }
   .hero__ctas .btn { flex: 1 1 auto; justify-content: center; }
-  .stat__num { font-size: clamp(1.4rem, 7vw, 3.4rem); }
   .h-xl { font-size: clamp(2.3rem, 11vw, 3.4rem); }
   .chapter__card .eyebrow { font-size: .64rem; letter-spacing: .1em; }
   .chapter__card .eyebrow .amber { white-space: nowrap; }
