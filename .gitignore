@@ -4,8 +4,13 @@ Media/
 # Local tooling and working notes
 .claude/
 Prompt for building a website.txt
+linkedin/
 
 # OS clutter
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# Remotion video source: dependencies and render output
+video/node_modules/
+video/out/
