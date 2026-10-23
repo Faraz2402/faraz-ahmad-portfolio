@@ -345,9 +345,8 @@ button { font: inherit; color: inherit; }
 }
 .story__portrait figcaption { margin-top: 16px; font-size: .7rem; }
 
-/* Portrait: scan-in reveal, breathing zoom, light sweep, cursor glare */
-.story__scan, .story__sweep, .story__glare { position: absolute; inset: 0; pointer-events: none; }
-.story__scan { z-index: 2; width: 100%; height: 100%; }
+/* Portrait: breathing zoom, light sweep, cursor glare */
+.story__sweep, .story__glare { position: absolute; inset: 0; pointer-events: none; }
 .story__sweep { z-index: 2; inset: -20% -60%; opacity: 0; mix-blend-mode: screen;
   background: linear-gradient(105deg, transparent 42%, rgba(111, 227, 255, .16) 49%, rgba(255, 215, 163, .1) 52%, transparent 58%); }
 .story__glare { z-index: 3; opacity: 0; transition: opacity .6s var(--ease); mix-blend-mode: soft-light;

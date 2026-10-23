@@ -756,80 +756,14 @@
   }
 
   /* ------------------------------------------------------------------------
-     Portrait: dot-matrix scan-in, then breathing/sweep (CSS) + cursor tilt
+     Portrait: clip reveal, then breathing/sweep (CSS) + cursor tilt
      ------------------------------------------------------------------------ */
   function portrait(frame) {
-    const img = $('img', frame);
-    const cv = $('.story__scan', frame);
-    const ctx = cv.getContext('2d');
-    const state = { dots: 0, scan: 0 };
-    let dots = [], w = 0, h = 0;
-
-    // Sample the photo as displayed (object-fit: cover, 50% 20%) into a dot grid.
-    // The plain backdrop is dropped; the figure glows like a hologram, brighter where the photo is lighter.
-    function sample() {
-      const fr = frame.getBoundingClientRect(), ir = img.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, 2), step = 8;
-      w = fr.width; h = fr.height;
-      cv.width = w * dpr; cv.height = h * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const cols = Math.ceil(w / step), rows = Math.ceil(h / step);
-      const off = document.createElement('canvas');
-      off.width = cols; off.height = rows;
-      const o = off.getContext('2d', { willReadFrequently: true });
-      const s = Math.max(ir.width / img.naturalWidth, ir.height / img.naturalHeight);
-      const dw = img.naturalWidth * s, dh = img.naturalHeight * s;
-      const dx = ir.left - fr.left + (ir.width - dw) * 0.5, dy = ir.top - fr.top + (ir.height - dh) * 0.2;
-      o.drawImage(img, dx / step, dy / step, dw / step, dh / step);
-      const px = o.getImageData(0, 0, cols, rows).data;
-      const lum = (i) => (px[i] * 0.299 + px[i + 1] * 0.587 + px[i + 2] * 0.114) / 255;
-      const bg = lum(0);
-      dots = [];
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          const l = lum((r * cols + c) * 4);
-          if (Math.abs(l - bg) > 0.07) dots.push({ x: c * step + step / 2, y: r * step + step / 2, d: l, warm: l > 0.6, t: Math.random() });
-        }
-      }
-    }
-
-    function render() {
-      const y = state.scan * h;
-      ctx.clearRect(0, 0, w, h);
-      ctx.save();
-      ctx.beginPath(); ctx.rect(0, y, w, h - y); ctx.clip();
-      ctx.fillStyle = '#0A1020'; ctx.fillRect(0, y, w, h - y);
-      for (const p of dots) {
-        const a = Math.min(1, Math.max(0, state.dots * 1.6 - p.t * 0.6));
-        if (!a) continue;
-        ctx.globalAlpha = a * (0.25 + 0.75 * p.d);
-        ctx.fillStyle = p.warm ? '#6FE3FF' : '#4C8DFF';
-        ctx.beginPath(); ctx.arc(p.x, p.y, 0.7 + p.d * 2.8, 0, Math.PI * 2); ctx.fill();
-      }
-      ctx.restore();
-      if (state.scan > 0 && state.scan < 1) {
-        const g = ctx.createLinearGradient(0, y - 60, 0, y);
-        g.addColorStop(0, 'rgba(111, 227, 255, 0)');
-        g.addColorStop(1, 'rgba(111, 227, 255, .28)');
-        ctx.fillStyle = g; ctx.fillRect(0, y - 60, w, 60);
-        ctx.fillStyle = '#6FE3FF'; ctx.shadowColor = '#6FE3FF'; ctx.shadowBlur = 16;
-        ctx.fillRect(0, y - 1, w, 2);
-        ctx.shadowBlur = 0;
-      }
-    }
-
-    gsap.set(frame, { clipPath: 'inset(100% 0% 0% 0%)' });
-    const tl = gsap.timeline({ paused: true, onComplete: () => frame.classList.add('is-live') })
-      .to(frame, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.2, ease: 'expo.inOut' }, 0)
-      .to(state, { dots: 1, duration: 1.1, ease: 'power2.out', onUpdate: render }, 0.2)
-      .to(state, { scan: 1, duration: 1.6, ease: 'power2.inOut', onUpdate: render }, 1.3)
-      .set(cv, { autoAlpha: 0 });
-
-    // getImageData throws on a tainted canvas (e.g. opened from file://): skip the dots, keep the reveal.
-    const ready = (img.complete ? Promise.resolve() : img.decode()).then(() => {
-      try { sample(); render(); } catch (e) { cv.style.display = 'none'; }
-    }).catch(() => { cv.style.display = 'none'; });
-    ScrollTrigger.create({ trigger: frame, start: 'top 80%', once: true, onEnter: () => ready.then(() => tl.play()) });
+    gsap.fromTo(frame, { clipPath: 'inset(100% 0% 0% 0%)' }, {
+      clipPath: 'inset(0% 0% 0% 0%)', duration: 1.6, ease: 'expo.inOut',
+      scrollTrigger: { trigger: frame, start: 'top 80%' },
+      onComplete: () => frame.classList.add('is-live'),
+    });
 
     if (!finePointer) return;
     gsap.set(frame, { transformPerspective: 900 });
