@@ -15,7 +15,7 @@ export const profile = {
   resume: './Faraz-Ahmad-Resume.pdf',
   resumeFileName: 'Faraz-Ahmad-Resume.pdf',
   portrait: './img/faraz-ahmad.jpg',
-  portraitCutout: './img/faraz-ahmad-cutout-v2.webp',
+  portraitCutout: './img/faraz-ahmad-cutout-v3.webp',
   contactMailto:
     'mailto:faraz2402@gmail.com?subject=' + encodeURIComponent('Opportunity — Faraz Ahmad'),
 }
