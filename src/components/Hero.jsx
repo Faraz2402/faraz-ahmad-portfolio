@@ -83,8 +83,8 @@ export default function Hero() {
           <motion.img
             src={profile.portraitCutout}
             alt=""
-            width="1656"
-            height="2208"
+            width="1655"
+            height="2206"
             fetchPriority="high"
             decoding="async"
             className="h-full w-full object-contain object-bottom [mask-image:linear-gradient(to_bottom,black_70%,transparent_97%)]"
