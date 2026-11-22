@@ -1,0 +1,161 @@
+@import 'tailwindcss' source(none);
+@source '../src';
+@source '../index.html';
+
+@theme {
+  --color-ivory: #e9e5dc;
+  --color-paper: #f1eee7;
+  --color-stone: #d8d4ca;
+  --color-sand: #c9bba5;
+  --color-charcoal: #252723;
+  --color-ink: #171816;
+  --color-olive: #737c64;
+  --color-olive-ink: #5a6150; /* AA-compliant olive for small text on ivory */
+  --color-sage: #9ca58f;
+  --color-terracotta: #b86f52;
+  --color-terracotta-ink: #94523c; /* AA-compliant terracotta for small text on ivory */
+  --color-muted: #55574f;
+
+  --font-serif: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    background: var(--color-ivory);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-charcoal);
+    color: var(--color-ivory);
+  }
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-terracotta);
+    outline-offset: 3px;
+  }
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  /* Small uppercase label used for navigation, indices and metadata */
+  .label {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+  .display {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+    font-variant-numeric: lining-nums;
+  }
+  .rule {
+    height: 1px;
+    background: currentColor;
+    opacity: 0.18;
+  }
+  .container-x {
+    width: 100%;
+    max-width: 92rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-x {
+      padding-inline: 2.5rem;
+    }
+  }
+  @media (min-width: 1280px) {
+    .container-x {
+      padding-inline: 3.5rem;
+    }
+  }
+  /* Underline that draws in on hover */
+  .link-draw {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.5s var(--ease-editorial);
+  }
+  .link-draw:hover,
+  .link-draw:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+/* Hero: name / portrait stack. --u is 1vw, capped so the composition stops growing on very wide screens. */
+.hero-scale {
+  --u: min(1vw, 15.2px);
+}
+.hero-name {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: calc(var(--u) * 22);
+  line-height: 0.86;
+  letter-spacing: -0.025em;
+  padding-top: 0.05em;
+  font-variant-numeric: lining-nums;
+  color: var(--color-ivory);
+}
+.hero-photo {
+  width: calc(var(--u) * 72);
+  height: calc(var(--u) * 96);
+  margin-top: calc(var(--u) * -9);
+}
+.hero-front {
+  margin-top: calc(var(--u) * -24);
+}
+@media (min-width: 768px) {
+  .hero-scale {
+    /* also bounded by viewport height so the name + portrait fit the first screen */
+    --u: min(1vw, 1.4vh, 15.2px);
+  }
+  .hero-name {
+    font-size: calc(var(--u) * 19);
+  }
+  .hero-photo {
+    width: calc(var(--u) * 39);
+    height: calc(var(--u) * 52);
+    margin-top: calc(var(--u) * -8.5);
+  }
+  .hero-front {
+    margin-top: calc(var(--u) * -19.5);
+  }
+}
+
+/* Custom cursor only applies to fine pointers */
+@media (hover: hover) and (pointer: fine) {
+  .has-custom-cursor,
+  .has-custom-cursor a,
+  .has-custom-cursor button {
+    cursor: none;
+  }
+}

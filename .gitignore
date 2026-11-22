@@ -4,13 +4,18 @@ Media/
 # Local tooling and working notes
 .claude/
 Prompt for building a website.txt
+You are an award-winning Principal.txt
 linkedin/
+
+# Build
+node_modules/
+dist/
 
 # OS clutter
 Thumbs.db
 desktop.ini
 .DS_Store
 
-# Remotion video source: dependencies and render output
+# Remotion video source (legacy site): dependencies and render output
 video/node_modules/
 video/out/
