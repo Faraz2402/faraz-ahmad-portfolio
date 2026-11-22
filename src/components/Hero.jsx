@@ -6,8 +6,8 @@ import Button from './Button.jsx'
 
 const ease = [0.22, 1, 0.36, 1]
 
-// One line of the oversized name: each letter rises out of a mask from below, staggered,
-// then lifts and warms to terracotta on hover.
+// One line of the oversized name: each letter rises straight up out of a mask from below,
+// staggered left to right, then lifts and warms to terracotta on hover.
 function NameLine({ children, delay }) {
   return (
     <div className="overflow-hidden">
@@ -22,8 +22,8 @@ function NameLine({ children, delay }) {
             key={i}
             className="inline-block"
             variants={{
-              hidden: { y: '110%', rotate: 8, skewX: -6 },
-              show: { y: '0%', rotate: 0, skewX: 0, transition: { duration: 1.1, ease } },
+              hidden: { y: '115%' },
+              show: { y: '0%', transition: { duration: 1.2, ease } },
             }}
           >
             <motion.span
@@ -83,8 +83,8 @@ export default function Hero() {
           <motion.img
             src={profile.portraitCutout}
             alt=""
-            width="900"
-            height="1200"
+            width="1656"
+            height="2208"
             fetchPriority="high"
             decoding="async"
             className="h-full w-full object-contain object-bottom [mask-image:linear-gradient(to_bottom,black_70%,transparent_97%)]"
