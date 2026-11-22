@@ -126,7 +126,7 @@ export default function Nav() {
                     animate={{ y: '0%' }}
                     transition={{ duration: 0.7, delay: 0.15 + i * 0.06, ease }}
                   >
-                    <span className={`display text-5xl ${active === item.id ? 'italic text-terracotta-ink' : ''}`}>
+                    <span className={`display text-5xl ${active === item.id ? 'text-terracotta-ink' : ''}`}>
                       {item.label}
                     </span>
                     <span className="label text-olive-ink">0{i + 1}</span>

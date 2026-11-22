@@ -17,7 +17,7 @@ export default function About() {
           </RevealText>
 
           <div className="col-span-12 lg:col-span-6 lg:col-start-7">
-            <RevealText as="p" stagger={0.012} className="display text-[1.65rem] font-normal leading-[1.3] tracking-[-0.01em] text-charcoal md:text-[2rem]">
+            <RevealText as="p" stagger={0.012} className="display text-[1.4rem] font-medium leading-[1.35] tracking-[-0.02em] text-charcoal md:text-[1.75rem]">
               {about.lead}
             </RevealText>
             <div className="mt-8 grid gap-5 text-muted md:grid-cols-2 md:gap-8">

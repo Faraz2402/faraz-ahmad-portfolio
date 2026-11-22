@@ -35,7 +35,7 @@ export default function Snapshot() {
                 <span className="label block text-charcoal">{s.label}</span>
                 <span className="mt-3 block max-w-[32ch] text-[0.9375rem] leading-relaxed text-muted">{s.context}</span>
               </dt>
-              <dd className="display order-1 text-[4.5rem] leading-none tracking-[-0.03em] tabular-nums text-charcoal sm:text-[5rem] xl:text-[6rem]">
+              <dd className="display order-1 text-[3.25rem] leading-none tracking-[-0.04em] tabular-nums text-charcoal sm:text-[3.75rem] xl:text-[4.5rem]">
                 <CountUp value={s.value} prefix={s.prefix} suffix={s.suffix} />
               </dd>
             </Reveal>

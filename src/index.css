@@ -16,7 +16,7 @@
   --color-terracotta-ink: #94523c; /* AA-compliant terracotta for small text on ivory */
   --color-muted: #55574f;
 
-  --font-serif: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+  --font-display: 'Syne', 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
@@ -37,7 +37,8 @@
     color: var(--color-charcoal);
     font-family: var(--font-sans);
     font-size: 1rem;
-    line-height: 1.65;
+    font-weight: 400;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -70,11 +71,15 @@
     line-height: 1.4;
   }
   .display {
-    font-family: var(--font-serif);
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    line-height: 0.95;
-    font-variant-numeric: lining-nums;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1;
+  }
+  /* Syne has no italic: accents are carried by colour instead */
+  .display em,
+  .display i {
+    font-style: normal;
   }
   .rule {
     height: 1px;
@@ -116,22 +121,21 @@
   --u: min(1vw, 15.2px);
 }
 .hero-name {
-  font-family: var(--font-serif);
-  font-weight: 700;
-  font-size: calc(var(--u) * 22);
-  line-height: 0.86;
-  letter-spacing: -0.025em;
-  padding-top: 0.05em;
-  font-variant-numeric: lining-nums;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: calc(var(--u) * 15);
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  padding-top: 0.06em;
   color: var(--color-ivory);
 }
 .hero-photo {
   width: calc(var(--u) * 72);
   height: calc(var(--u) * 96);
-  margin-top: calc(var(--u) * -9);
+  margin-top: calc(var(--u) * -6.5);
 }
 .hero-front {
-  margin-top: calc(var(--u) * -24);
+  margin-top: calc(var(--u) * -26);
 }
 @media (min-width: 768px) {
   .hero-scale {
@@ -139,15 +143,15 @@
     --u: min(1vw, 1.4vh, 15.2px);
   }
   .hero-name {
-    font-size: calc(var(--u) * 19);
+    font-size: calc(var(--u) * 14.5);
   }
   .hero-photo {
-    width: calc(var(--u) * 39);
-    height: calc(var(--u) * 52);
-    margin-top: calc(var(--u) * -8.5);
+    width: calc(var(--u) * 42);
+    height: calc(var(--u) * 56);
+    margin-top: calc(var(--u) * -6.5);
   }
   .hero-front {
-    margin-top: calc(var(--u) * -19.5);
+    margin-top: calc(var(--u) * -22);
   }
 }
 

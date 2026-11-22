@@ -38,7 +38,7 @@ function Project({ p, i }) {
           {p.title}
         </RevealText>
         <div className="mt-10 lg:mt-14">
-          <p className="display text-[5rem] leading-none tracking-[-0.03em] text-terracotta transition-transform duration-700 ease-[var(--ease-editorial)] group-hover:translate-x-2 md:text-[6.5rem]">
+          <p className="display text-[3.75rem] leading-none tracking-[-0.04em] text-terracotta transition-transform duration-700 ease-[var(--ease-editorial)] group-hover:translate-x-2 md:text-[4.75rem]">
             {p.figure}
           </p>
           <p className="label mt-3 text-ivory/70">{p.figureLabel}</p>

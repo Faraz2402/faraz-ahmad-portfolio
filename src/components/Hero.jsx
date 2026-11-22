@@ -6,17 +6,35 @@ import Button from './Button.jsx'
 
 const ease = [0.22, 1, 0.36, 1]
 
-// One line of the oversized name, rising out of a mask from below.
+// One line of the oversized name: each letter rises out of a mask from below, staggered,
+// then lifts and warms to terracotta on hover.
 function NameLine({ children, delay }) {
   return (
     <div className="overflow-hidden">
       <motion.div
-        className="hero-name text-center"
-        initial={{ y: '100%' }}
-        animate={{ y: '0%' }}
-        transition={{ duration: 1.3, ease, delay }}
+        className="hero-name flex justify-center"
+        initial="hidden"
+        animate="show"
+        variants={{ show: { transition: { staggerChildren: 0.07, delayChildren: delay } } }}
       >
-        {children}
+        {[...children].map((ch, i) => (
+          <motion.span
+            key={i}
+            className="inline-block"
+            variants={{
+              hidden: { y: '110%', rotate: 8, skewX: -6 },
+              show: { y: '0%', rotate: 0, skewX: 0, transition: { duration: 1.1, ease } },
+            }}
+          >
+            <motion.span
+              className="inline-block"
+              whileHover={{ y: '-8%', color: '#b86f52' }}
+              transition={{ type: 'spring', stiffness: 300, damping: 18 }}
+            >
+              {ch}
+            </motion.span>
+          </motion.span>
+        ))}
       </motion.div>
     </div>
   )
@@ -58,14 +76,14 @@ export default function Hero() {
 
         <motion.div
           className="hero-photo relative z-10 mx-auto"
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, ease, delay: 0.45 }}
+          initial={{ opacity: 0, y: 40, scale: 1.06 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.4, ease, delay: 0.4 }}
         >
           <motion.img
             src={profile.portraitCutout}
             alt=""
-            width="896"
+            width="900"
             height="1200"
             fetchPriority="high"
             decoding="async"

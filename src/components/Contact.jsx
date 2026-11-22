@@ -14,7 +14,7 @@ export default function Contact() {
         <RevealText
           as="h2"
           id="contact-title"
-          className="display mt-14 text-[3.4rem] leading-[0.92] tracking-[-0.03em] sm:text-7xl md:mt-20 md:text-[7.5rem] xl:text-[9.5rem]"
+          className="display mt-14 text-[2.6rem] leading-[0.95] tracking-[-0.04em] sm:text-6xl md:mt-20 md:text-[5.5rem] xl:text-[7rem]"
         >
           Let’s make better
           <br />

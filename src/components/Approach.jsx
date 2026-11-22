@@ -26,7 +26,7 @@ export default function Approach() {
               key={p.title}
               className="grid grid-cols-12 gap-x-6 gap-y-4 border-t border-charcoal/25 py-10 md:py-14"
             >
-              <span className="display col-span-12 text-6xl italic leading-none text-terracotta md:col-span-2 md:text-7xl">
+              <span className="display col-span-12 text-6xl leading-none text-terracotta md:col-span-2 md:text-7xl">
                 {numerals[i]}
               </span>
               <RevealText as="h3" stagger={0.035} className="display col-span-12 text-3xl leading-[1.08] md:col-span-6 md:text-[2.6rem]">
